@@ -1,0 +1,5 @@
+
+Flask>=3.0,<4.0
+Flask-Cors>=4.0
+gunicorn>=22.0
+yt-dlp>=2025.1.1

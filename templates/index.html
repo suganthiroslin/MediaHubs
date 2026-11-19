@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediaHub - Convert video URLs to MP4, extract audio, and trim audio and video files.">
+    <title>MediaHub | Smart Media Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a href="/" class="logo">Media<span>Hub</span></a>
+        <nav>
+            <a href="#converter">Converter</a>
+            <a href="#editor">Media Editor</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-tag">YOUR ALL-IN-ONE MEDIA TOOL</div>
+            <h1>Convert. Edit. <span>Download.</span></h1>
+            <p>Your simple media workspace to convert online videos<br>
+               and edit audio and video files in one place.</p>
+        </section>
+
+        <section class="workspace" id="converter">
+            <div class="section-heading">
+                <h2>URL Media Converter</h2>
+                <p>Paste a supported video URL and convert it into an MP4 or MP3 file.</p>
+            </div>
+
+            <div class="panel">
+                <label for="videoUrl">Enter Video URL</label>
+                <input type="url" id="videoUrl" name="videoUrl"
+                       placeholder="https://example.com/video" autocomplete="url">
+
+                <div class="format-selector">
+                    <label for="urlFormat">Choose Output Format</label>
+                    <select id="urlFormat">
+                        <option value="mp4">MP4 - Video</option>
+                        <option value="mp3">MP3 - Audio</option>
+                    </select>
+                </div>
+
+                <button type="button" id="convertUrlBtn" class="primary-btn full-btn">
+                    Convert Media
+                </button>
+
+                <p class="helper-text">
+                    Use supported sources and only download content you own or have permission to download.
+                </p>
+                <div id="urlStatus" class="status" role="status" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="workspace" id="editor">
+            <div class="section-heading">
+                <h2>Media Editor</h2>
+                <p>Upload an audio or video file, then choose what you want to do.</p>
+            </div>
+
+            <div class="panel">
+                <label for="mediaFile">Upload Audio or Video</label>
+
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="mediaFile" name="mediaFile"
+                           accept="audio/*,video/*,.mp3,.wav,.aac,.m4a,.ogg,.flac,.mp4,.mkv,.mov,.webm,.avi">
+                    <div class="upload-icon">↑</div>
+                    <h3>Choose a file to upload</h3>
+                    <p>Click here to select an audio or video file</p>
+                    <span id="fileName">No file selected</span>
+                    <span class="file-limit">Maximum file size: 300 MB</span>
+                </div>
+
+                <div class="operation-heading">Choose an operation</div>
+                <div class="editor-options">
+                    <button type="button" class="option-btn active" data-operation="mp3">
+                        Extract Audio (MP3)
+                    </button>
+                    <button type="button" class="option-btn" data-operation="wav">
+                        Extract Audio (WAV)
+                    </button>
+                    <button type="button" class="option-btn" data-operation="mp4">
+                        Convert to MP4
+                    </button>
+                    <button type="button" class="option-btn" data-operation="video_only">
+                        Remove Audio (Mute)
+                    </button>
+                    <button type="button" class="option-btn" data-operation="keep_audio">
+                        Keep Audio + Convert
+                    </button>
+                </div>
+
+                <button type="button" id="processBtn" class="primary-btn full-btn">
+                    Process Media
+                </button>
+
+                <div class="divider"><span>OR TRIM YOUR MEDIA</span></div>
+
+                <div class="trim-fields">
+                    <div>
+                        <label for="startTime">Start Time (Seconds)</label>
+                        <input type="number" id="startTime" name="startTime"
+                               min="0" step="0.1" value="0" placeholder="0">
+                    </div>
+                    <div>
+                        <label for="endTime">End Time (Seconds)</label>
+                        <input type="number" id="endTime" name="endTime"
+                               min="0" step="0.1" placeholder="Example: 30">
+                    </div>
+                </div>
+
+                <button type="button" id="trimBtn" class="secondary-btn full-btn">
+                    Trim Media
+                </button>
+
+                <div id="editorStatus" class="status" role="status" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">↗</div>
+                <h3>URL Conversion</h3>
+                <p>Convert supported online video URLs into MP4 or MP3 files.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">♫</div>
+                <h3>Audio Extraction</h3>
+                <p>Extract audio from video files and save it as MP3 or WAV.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✂</div>
+                <h3>Media Trimming</h3>
+                <p>Choose start and end times to trim audio or video files.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    <p>© 2026 MediaHub. All rights reserved.</p>
+    <p>Developed by <span class="footer-name">Suganthi Rajamuthu</span></p>
+    <p>Convert • Edit • Download</p>
+</footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
